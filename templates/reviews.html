@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html >
+<head>
+    {% load static %}
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/logo1-128x128.png" type="image/x-icon">
+  <meta name="description" content="Website for Estaa Hair">
+  <title>Estaa Hair|Customer Reviews</title>
+  <link rel="stylesheet" href="{% static 'assets/web/assets/mobirise-icons/mobirise-icons.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/tether/tether.min.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap-grid.min.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap-reboot.min.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/socicon/css/styles.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/animatecss/animate.min.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/dropdown/css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/theme/css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/mobirise/css/mbr-additional.css' %}" type="text/css">
+  
+  
+  
+</head>
+<body>
+<section class="menu cid-qZjXN9c3r7" once="menu" id="menu1-13">
+    <nav class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-fixed-top navbar-toggleable-sm bg-color transparent">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </button>
+        <div class="menu-logo">
+            <div class="navbar-brand">
+                <span class="navbar-logo">
+                    <a href="home">
+                         <img src="{% static 'assets2/images/logo2.png' %}" alt="Estaa Hair" style="height: 5rem;">
+                    </a>
+                </span>
+                <span class="navbar-caption-wrap">
+                    <a class="navbar-caption text-white display-4" href="{% url 'home' %}">
+                        Estaa Hair
+                    </a>
+                </span>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true">
+                <li class="nav-item">
+                    <a class="nav-link link text-white display-4" href="{% url 'home' %}">
+                        <span class="mbri-home mbr-iconfont mbr-iconfont-btn"></span>
+                        Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link text-white display-4" href="{% url 'blog' %}">
+                        <span class="mbri-user2 mbr-iconfont mbr-iconfont-btn"></span>
+                        Natural Hair
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link text-white display-4" href="{% url 'services' %}" >
+                        <span class="mbri-edit mbr-iconfont mbr-iconfont-btn"></span>
+                        Services
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link text-white display-4" href="{% url 'reviews' %}">
+                        <span class="mbri-edit mbr-iconfont mbr-iconfont-btn"></span>
+                        Reviews
+                    </a>
+                </li>
+                {% if request.user.username == "" %}
+                <li class="nav-item">
+                    <a class="nav-link link text-white display-4" href="{% url 'login' %}">
+                        <span class="mbri-hearth mbr-iconfont mbr-iconfont-btn"></span>
+                        Login
+                    </a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link link text-white display-4" href="{% url 'userpage' %}">
+                        <span class="mbri-hearth mbr-iconfont mbr-iconfont-btn"></span>
+                        Profile
+                    </a>
+                </li>
+                {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link link text-white display-4" href="{% url 'contact' %}">
+                        <span class="mbri-smile-face mbr-iconfont mbr-iconfont-btn"></span>
+                        Contact Us
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link text-white display-4" href="{% url 'shop' %}">
+                        <span class="mbri-shopping-cart mbr-iconfont mbr-iconfont-btn"></span>
+                        Store
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</section>
+
+<section class="engine"><a href="https://mobiri.se/g">build your own website</a></section><section class="mbr-section content5 cid-qZkb6Zd6Cp mbr-parallax-background" id="content5-10">
+
+    
+
+    
+
+    <div class="container">
+        <div class="media-container-row">
+            <div class="title col-12 col-md-8">
+                <h2 class="align-center mbr-bold mbr-white pb-3 mbr-fonts-style display-1">
+                    CUSTOMER REVIEWS</h2>
+                <h3 class="mbr-section-subtitle align-center mbr-light mbr-white pb-3 mbr-fonts-style display-5">
+                    Hear what our Awesome Customers have to say
+                </h3>
+                
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="testimonials3 cid-qZkboMWPBP" id="testimonials3-12">
+
+    
+
+    
+{% for review in reviews %}
+    <div class="container">
+        <div class="media-container-row">
+            <div class="media-content px-3 align-self-center mbr-white py-2">
+                <p class="mbr-text testimonial-text mbr-fonts-style display-7">
+                {{ review.body }}
+                </p>
+                <p class="mbr-author-name pt-4 mb-2 mbr-fonts-style display-7">
+                Review made by {{ review.user }}
+                </p>
+                <p class="mbr-author-desc mbr-fonts-style display-7">
+                Product: {{ review.product }}
+                </p>
+            </div>
+
+            <div class="mbr-figure pl-lg-5" style="width: 130%;">
+              <img src="{% static 'assets/images/face5.jpg' %}">
+            </div>
+        </div>
+    </div>
+{% endfor %}
+</section>
+
+<section class="cid-qZki3IORNG" id="footer1-1d">
+    <div class="container">
+        <div class="media-container-row content text-white">
+            <div class="col-12 col-md-3">
+                <div class="media-wrap">
+                    <a href="{% url 'home' %}">
+                        <img src="{% static 'assets2/images/logo2.png' %}" alt="Estaa Hair">
+                    </a>
+                </div>
+            </div>
+            <div class="col-12 col-md-3 mbr-fonts-style display-7">
+                <h5 class="pb-3">
+                    Address
+                </h5>
+                <p class="mbr-text">
+                    Dorcas Hall
+                    <br>Covenant University
+                </p>
+            </div>
+            <div class="col-12 col-md-3 mbr-fonts-style display-7">
+                <h5 class="pb-3">
+                    Contacts
+                </h5>
+                <p class="mbr-text">
+                    Email: princessadeiye@gmail.com.com
+                    <br>Phone: +234 (0) 810 0000 001
+                </p>
+            </div>
+            <div class="col-12 col-md-3 mbr-fonts-style display-7">
+                <h5 class="pb-3">
+                    Links
+                </h5>
+                <p class="mbr-text">
+                    <a class="text-primary" href="{% url 'shop' %}">Online Store</a>
+                    <br><a class="text-primary" href="#">Download for Windows</a>
+                    <br><a class="text-primary" href="#">Download for Mac</a>
+                </p>
+            </div>
+        </div>
+        <div class="footer-lower">
+            <div class="media-container-row">
+                <div class="col-sm-12">
+                    <hr>
+                </div>
+            </div>
+            <div class="media-container-row mbr-white">
+                <div class="col-sm-6 copyright">
+                    <p class="mbr-text mbr-fonts-style display-7">
+                        © Copyright 2018 Estaa Hair - All Rights Reserved
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <div class="social-list align-right">
+                        <div class="soc-item">
+                            <a href="https://twitter.com/mobirise" target="_blank">
+                                <span class="socicon-twitter socicon mbr-iconfont mbr-iconfont-social"></span>
+                            </a>
+                        </div>
+                        <div class="soc-item">
+                            <a href="https://www.facebook.com/pages/Mobirise/1616226671953247" target="_blank">
+                                <span class="socicon-facebook socicon mbr-iconfont mbr-iconfont-social"></span>
+                            </a>
+                        </div>
+                        <div class="soc-item">
+                            <a href="https://www.youtube.com/c/mobirise" target="_blank">
+                                <span class="socicon-youtube socicon mbr-iconfont mbr-iconfont-social"></span>
+                            </a>
+                        </div>
+                        <div class="soc-item">
+                            <a href="https://instagram.com/mobirise" target="_blank">
+                                <span class="socicon-instagram socicon mbr-iconfont mbr-iconfont-social"></span>
+                            </a>
+                        </div>
+                        <div class="soc-item">
+                            <a href="https://plus.google.com/u/0/+Mobirise" target="_blank">
+                                <span class="socicon-googleplus socicon mbr-iconfont mbr-iconfont-social"></span>
+                            </a>
+                        </div>
+                        <div class="soc-item">
+                            <a href="https://www.behance.net/Mobirise" target="_blank">
+                                <span class="socicon-behance socicon mbr-iconfont mbr-iconfont-social"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+  <script src="{% static 'assets/web/assets/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'assets/popper/popper.min.js' %}"></script>
+  <script src="{% static 'assets/tether/tether.min.js' %}"></script>
+  <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'assets/smoothscroll/smooth-scroll.js' %}"></script>
+  <script src="{% static 'assets/touchswipe/jquery.touch-swipe.min.js' %}"></script>
+  <script src="{% static 'assets/viewportchecker/jquery.viewportchecker.js' %}"></script>
+  <script src="{% static 'assets/parallax/jarallax.min.js' %}"></script>
+  <script src="{% static 'assets/dropdown/js/script.min.js' %}"></script>
+  <script src="{% static 'assets/theme/js/script.js' %}"></script>
+  
+  
+ <div id="scrollToTop" class="scrollToTop mbr-arrow-up"><a style="text-align: center;"><i></i></a></div>
+    <input name="animation" type="hidden">
+  </body>
+</html>

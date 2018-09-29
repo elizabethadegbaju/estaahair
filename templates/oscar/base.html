@@ -1,0 +1,199 @@
+{% load i18n %}
+{% load staticfiles %}
+{% load thumbnail %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE|default:"en-gb" }}" class="no-js">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <meta name="created" content="{% now "jS M Y h:i" %}" />
+        <meta name="viewport" content="{% block viewport %}width=device-width, initial-scale=1, minimum-scale=1{% endblock %}" />
+        <meta name="robots" content="NOARCHIVE,NOCACHE" />
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="Website for Estaa Hair">
+        <title>Estaa Hair|Shop</title>
+        <link rel="stylesheet" href="{% static 'assets/web/assets/mobirise-icons/mobirise-icons.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/tether/tether.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap-grid.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap-reboot.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/animatecss/animate.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/dropdown/css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/socicon/css/styles.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/theme/css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/mobirise/css/mbr-additional.css' %}" type="text/css">
+        <link rel="shortcut icon" href="{% static 'assets/images/logo1-128x128.png' %}" type="image/x-icon">
+        <link rel="stylesheet" href="{% static 'assets2/web/assets/mobirise-icons/mobirise-icons.css' %}">
+        <link rel="stylesheet" href="{% static 'assets2/tether/tether.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets2/bootstrap/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets2/bootstrap/css/bootstrap-grid.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets2/bootstrap/css/bootstrap-reboot.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets2/socicon/css/styles.css' %}">
+        <link rel="stylesheet" href="{% static 'assets2/animatecss/animate.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets2/dropdown/css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'assets2/theme/css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'assets2/mobirise/css/mbr-additional.css' %}" type="text/css">
+
+        <style type="text/css">
+            .navbar-nav > li > a {
+                display: block!important;
+                padding: 3px!important;
+                clear: both!important;
+                font-weight: lighter!important;
+                line-height: 1.42857143!important;
+                color: #333333!important;
+                white-space: nowrap!important;
+                font-family: 'Rubik', sans-serif!important;
+                font-size: 16px!important;
+            }
+            a:hover{
+            color: grey!important;
+            }
+        </style>
+
+        {# Block where global CSS will go. #}
+        {% block styles %}{% endblock %}
+
+        {# Additional CSS - specific to certain pages #}
+        {% block extrastyles %}{% endblock %}
+
+        {% block extrahead %}{% endblock %}
+
+        {% block tracking %}
+            {# Default to using Google analytics #}
+            {% include "partials/google_analytics.html" %}
+        {% endblock %}
+    </head>
+
+    <body id="{% block body_id %}default{% endblock %}" class="{% block body_class %}default{% endblock %}" style="background-image: url({% static 'img/bg2.jpg' %}); background-attachment: fixed;">
+        <section class="menu cid-qZjXN9c3r7" once="menu" id="menu1-13">
+    <nav class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-fixed-top navbar-toggleable-sm" style="background-color: rgba(255,192,203,0.7);">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </button>
+        <div class="menu-logo">
+            <div class="navbar-brand">
+                <span class="navbar-logo">
+                    <a href="{% url 'home' %}">
+                         <img src="{% static 'assets2/images/logo2.png' %}" alt="Estaa Hair" style="height: 5rem!important;">
+                    </a>
+                </span>
+                <span class="navbar-caption-wrap">
+                    <a class="navbar-caption text-white display-4" href="{% url 'home' %}" style="font-size: 16px!important;">
+                        Estaa Hair
+                    </a>
+                </span>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true">
+                <li class="nav-item">
+                    <a class="nav-link link text-white display-4" href="{% url 'home' %}">
+                        <i class="mbri-home mbr-iconfont mbr-iconfont-btn"></i>
+                        Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link text-white display-4" href="{% url 'blog' %}">
+                        <i class="mbri-user2 mbr-iconfont mbr-iconfont-btn"></i>
+                        Natural Hair
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link text-white display-4" href="{% url 'services' %}" >
+                        <i class="mbri-edit mbr-iconfont mbr-iconfont-btn"></i>
+                        Services
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link text-white display-4" href="{% url 'reviews' %}">
+                        <i class="mbri-edit mbr-iconfont mbr-iconfont-btn"></i>
+                        Reviews
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link text-white display-4" href="{% url 'contact' %}">
+                        <i class="mbri-smile-face mbr-iconfont mbr-iconfont-btn"></i>
+                        Contact Us
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link text-white display-4" href="{% url 'shop' %}">
+                        <i class="mbri-shopping-cart mbr-iconfont mbr-iconfont-btn"></i>
+                        Store
+                    </a>
+                </li>
+                {% if user.is_authenticated %}
+                {% block nav_account_navbar_authenticated %}
+                    <li class="nav-item">
+                        {% if num_unread_notifications > 0 %}
+                            {# If user has new notifications - we change account link to go to inbox #}
+                            <a class="nav-link link text-white display-4" href="{% url 'customer:notifications-inbox' %}">
+                                <i class="icon-user"></i>
+                                {% trans "Account" %}
+                                <span class="label label-warning">{{ num_unread_notifications }}</span>
+                            </a>
+                        {% else %}
+                            <a class="nav-link link text-white display-4" href="{% url 'customer:summary' %}"><i class="icon-user"></i> {% trans "Account" %}</a>
+                        {% endif %}
+                    </li>
+                    {% if user.is_staff or perms.partner.dashboard_access %}
+                        <li class="nav-item"><a class="nav-link link text-white display-4" href="{% url 'dashboard:index' %}"><i class="icon-list-ul"></i> {% trans "Dashboard" %}</a></li>
+                    {% endif %}
+                    <li class="nav-item"><a class="nav-link link text-white display-4" id="logout_link" href="{% url 'customer:logout' %}"><i class="icon-signout"></i> {% trans "Logout" %}</a></li>
+                {% endblock %}
+                {% else %}
+                    <li class="nav-item"><a class="nav-link link text-white display-4" id="login_link" href="{% url 'customer:login' %}"><i class="icon-signin"></i> {% trans "Login or register" %}</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+</section>
+        {# Main content goes in this 'layout' block #}
+        {% block layout %}{% endblock %}
+
+        {# Scripts loaded from a CDN. #}
+        {% block cdn_scripts %}
+            <!-- jQuery -->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <script>window.jQuery || document.write('<script src="{% static "oscar/js/jquery/jquery.min.js" %}"><\/script>')</script>
+            <script src="{% static 'assets/web/assets/jquery/jquery.min.js' %}"></script>
+              <script src="{% static 'assets/popper/popper.min.js' %}"></script>
+              <script src="{% static 'assets/tether/tether.min.js' %}"></script>
+              <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+              <script src="{% static 'assets/smoothscroll/smooth-scroll.js' %}"></script>
+              <script src="{% static 'assets/ytplayer/jquery.mb.ytplayer.min.js' %}"></script>
+              <script src="{% static 'assets/vimeoplayer/jquery.mb.vimeo_player.js' %}"></script>
+              <script src="{% static 'assets/viewportchecker/jquery.viewportchecker.js' %}"></script>
+              <script src="{% static 'assets/dropdown/js/script.min.js' %}"></script>
+              <script src="{% static 'assets/touchswipe/jquery.touch-swipe.min.js' %}"></script>
+              <script src="{% static 'assets/theme/js/script.js' %}"></script>
+              <script src="{% static 'assets/formoid/formoid.min.js' %}"></script>
+              
+              
+             <div id="scrollToTop" class="scrollToTop mbr-arrow-up"><a style="text-align: center;"><i></i></a></div>
+                <input name="animation" type="hidden">
+        {% endblock %}
+
+        {# Local scripts #}
+        {% block scripts %}
+        {% endblock %}
+
+        {# Additional JS scripts #}
+        {% block extrascripts %}{% endblock %}
+
+        {# Block for body onload functions #}
+        <script>
+            $(function() {
+                {% block onbodyload %}{% endblock %}
+            });
+        </script>
+
+        {# Page meta-data - this is populated by the 'metadata' template context processor #}
+    </body>
+</html>

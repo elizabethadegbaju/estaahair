@@ -1,0 +1,167 @@
+{% extends "dashboard/base.html" %}
+
+{% load category_tags %}
+{% load dashboard_tags %}
+{% load i18n %}
+{% load staticfiles %}
+
+{% block styles %}
+    {% if use_less %}
+        <link rel="stylesheet/less" type="text/css" href="{% static "oscar/less/dashboard.less" %}" />
+    {% else %}
+        <link rel="stylesheet" type="text/css" href="{% static "oscar/css/dashboard.css" %}" />
+    {% endif %}
+{% endblock %}
+
+{% block extrastyles %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static "oscar/js/select2/select2.min.css" %}" />
+    <link rel="stylesheet" href="{% static "oscar/css/select2-bootstrap.min.css" %}" />
+    <link rel="stylesheet" href="{% static "oscar/js/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css" %}" />
+    <link rel="stylesheet" href="{% static "oscar/css/datetimepicker.css" %}" />
+{% endblock %}
+
+{% block title %}
+    {% trans "Dashboard" %} | {{ block.super }}
+{% endblock %}
+
+{% block layout %}
+    <!-- {% block navbar %}
+    <nav class="navbar navbar-static-top navbar-inverse navbar-accounts">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".nav-accounts">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <span class="navbar-brand">{{ shop_name }}</span>
+            </div> -->
+            <div class="container-fluid" style="text-align: center; color: pink;">
+                <strong>
+                    <h1><br><br><br><br><br><br>Estaa Hair Admin Panel</h1>
+                    <h3>{% trans "Welcome" %} <em>{{ user.get_full_name|default:request.user.email }}</em><br><br><br><br></h3>
+                </strong>
+                    <!-- <li><a href="{{ homepage_url }}"><i class="icon-home"></i> {% trans "Return to site" %}</a></li>
+                    <li><a href="{% url 'customer:summary' %}"><i class="icon-user"></i> {% trans "Account" %}</a></li>
+                    <li><a href="{% url 'dashboard:logout' %}"><i class="icon-signout"></i> {% trans "Log out" %}</a></li> -->
+            </div><!-- 
+        </div>/navbar-inner
+    </nav></navbar -->
+    <!-- {% endblock navbar %} -->
+
+    {% block dashboard_nav %}
+        {% dashboard_navigation user as nav_items %}
+
+        <nav class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-toggleable-sm" style="background-color: rgba(255,192,203,0.7);" id="navdashboard">
+            <div class="container-fluid dashboard">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".nav-primary">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+
+                <div class="collapse navbar-collapse nav-primary">
+                    <ul class="navbar-nav nav-dropdown">
+                        {% for item in nav_items %}
+                        <li class="nav-item dropdown">
+                            {% if item.is_heading %}
+                            <a href="#" class="nav-link link dropdown-toggle text-white display-4" data-toggle="dropdown" role="button" aria-expanded="false">
+                                {% if item.icon %}<span class="{{ item.icon }}"></span>{% endif %}
+                                {{ item.label }}
+                            </a>
+                            {% else %}
+                            <a href="{{ item.url }}" class="nav-link link text-white display-4">
+                                {% if item.icon %}<span class="{{ item.icon }}"></span>{% endif %}
+                                {{ item.label }}
+                            </a>
+                            {% endif %}
+                            {% if item.has_children %}
+                            <ul class="dropdown-menu">
+                                {% for subitem in item.children %}
+                                <li class="dropdown-item text-white display-4">
+                                    <a href="{{ subitem.url }}">
+                                    {% if subitem.icon %}<span class="{{ subitem.icon }}"></span>{% endif %}
+                                    {{ subitem.label }}
+                                    </a>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    {% endblock %}
+
+    <div class="container-fluid dashboard" style="background-color: rgba(150,150,150,0.7)";>
+        {% block breadcrumbs %}
+        <ul class="breadcrumb">
+            <li><a href="{% url 'dashboard:index' %}">{% trans "Dashboard" %}</a></li>
+        </ul>
+        {% endblock %}
+
+        <div class="content">
+            {% include 'dashboard/partials/alert_messages.html' %}
+            {% block header %}
+            <div class="page-header action">
+                <h1>{% block headertext %}{% endblock %}</h1>
+            </div>
+            {% endblock %}
+            <div class="page-content">
+                {% block content %}
+                    {% block dashboard_content %}{% endblock dashboard_content %}
+                {% endblock content %}
+            </div>
+        </div>
+    </div><!-- /container -->
+
+{% endblock %}
+
+{# Local scripts #}
+{% block scripts %}
+    <!-- Twitter Bootstrap -->
+    <script src="{% static "oscar/js/bootstrap3/bootstrap.min.js" %}"></script>
+    <!-- Oscar -->
+    <script src="{% static "oscar/js/oscar/ui.js" %}"></script>
+{% endblock %}
+
+{% block extrascripts %}
+    {{ block.super }}
+
+    {# jQuery plugins #}
+    <script src="{% static "oscar/js/mousewheel/jquery.mousewheel.js" %}"></script>
+    <script src="{% static "oscar/js/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js" %}"></script>
+    <script src="{% static "oscar/js/bootstrap-datetimepicker/locales/bootstrap-datetimepicker.all.js" %}"></script>
+    <script src="{% static "oscar/js/inputmask/jquery.inputmask.bundle.js" %}"></script>
+    <script src="{% static "oscar/js/select2/select2.min.js" %}"></script>
+    <script src="{% static "oscar/js/jquery-sortable/jquery-sortable-min.js" %}"></script>
+    <script src="{% static "oscar/js/oscar/dashboard.js" %}"></script>
+    <script src="{% static "oscar/js/oscar/RelatedObjectLookups.js" %}"></script>
+    <script src="{% static "oscar/js/tinymce/tinymce.min.js" %}"></script>
+    <script src="{% static "oscar/js/tinymce/jquery.tinymce.min.js" %}"></script>
+{% endblock %}
+
+{% block onbodyload %}
+    {{ block.super }}
+
+    // Javascript to enable link to tab
+    var url = document.location.toString();
+    if (url.match('#')) {
+        $('.nav-list a[href="#' + url.split('#')[1] + '"]').tab('show');
+    }
+
+    // Change hash for page-reload
+    $('.nav-list a').on('shown.bs.tab', function (e) {
+        window.location.hash = e.target.hash;
+    });
+
+    options = {
+      'languageCode': '{{ LANGUAGE_CODE }}'
+    };
+    oscar.dashboard.init(options);
+{% endblock %}
